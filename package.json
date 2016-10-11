@@ -1,0 +1,25 @@
+{
+  "name": "elm-workshop",
+  "version": "0.0.1",
+  "description": "Workshop about Elm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "reveal-md slides.md --theme thoughtworks --title 'Elm!'",
+    "build": "mkdir -p dist && cp -r {screenshots,pictures,theme} dist && cp -r node_modules/reveal.js/{css,js,lib,plugin} dist && reveal-md slides.md --theme thoughtworks --title 'Elm Workshop' --static > dist/index.html",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roberto/elm-workshop.git"
+  },
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/roberto/elm-workshop/issues"
+  },
+  "homepage": "https://github.com/roberto/elm-workshop#readme",
+  "dependencies": {
+    "gh-pages": "^0.11.0",
+    "reveal-md": "0.0.30"
+  }
+}
