@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "reveal-md slides.md --theme thoughtworks --title 'Elm!'",
-    "build": "mkdir -p dist && cp -r {screenshots,pictures,theme} dist && cp -r node_modules/reveal.js/{css,js,lib,plugin} dist && reveal-md slides.md --theme thoughtworks --title 'Elm Workshop' --static > dist/index.html",
+    "build": "mkdir -p dist && cp -r {images,theme} dist && cp -r node_modules/reveal.js/{css,js,lib,plugin} dist && reveal-md slides.md --theme thoughtworks --title 'Elm Workshop' --static > dist/index.html",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
