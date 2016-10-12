@@ -7,6 +7,7 @@ import Html.Attributes exposing (src)
 import Task
 import Json.Decode as Json
 import Http
+import Random
 
 
 main : Program Never
@@ -31,7 +32,8 @@ init =
 
 
 type Msg
-    = GetPokemon
+    = GetRandomPokemon
+    | FetchPokemon Int
     | FetchSucceed String
     | FetchFail Http.Error
 
@@ -39,12 +41,15 @@ type Msg
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        GetPokemon ->
+        GetRandomPokemon ->
+            ( model, Random.generate FetchPokemon (Random.int 1 721) )
+
+        FetchPokemon id ->
             ( { model
                 | name = "Loading..."
-                , image = "http://www.pokestadium.com/assets/img/sprites/1.png"
+                , image = "http://www.pokestadium.com/assets/img/sprites/" ++ (toString id) ++ ".png"
               }
-            , getPokemon 1
+            , getPokemon id
             )
 
         FetchSucceed name ->
@@ -61,7 +66,7 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div []
-        [ button [ onClick GetPokemon ] [ text "Get more Pokémons!" ]
+        [ button [ onClick GetRandomPokemon ] [ text "Get more Pokémons!" ]
         , h2 [] [ text model.name ]
         , img [ src model.image ] []
         ]
