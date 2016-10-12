@@ -116,12 +116,10 @@ elm-repl
 > "Hello World"
 "Hello World" : String
 ```
-<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ```elm
 > :exit
 ```
-<!-- .element: class="fragment" data-fragment-index="2" -->
 
 ----
 
@@ -131,7 +129,6 @@ elm-repl
 > "hello" ++ "world"
 "helloworld" : String
 ```
-<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ```
 > (2 + 3) * 4
@@ -140,19 +137,16 @@ elm-repl
 > 9 / 2
 4.5 : Float
 ```
-<!-- .element: class="fragment" data-fragment-index="2" -->
 
 ```
 > 'A'
 'A' : Char
 ```
-<!-- .element: class="fragment" data-fragment-index="3" -->
 
 ```
 > True || False
 True : Bool
 ```
-<!-- .element: class="fragment" data-fragment-index="4" -->
 
 ----
 
@@ -162,19 +156,16 @@ True : Bool
 > names = [ "Alice", "Bob", "Chuck" ]
 ["Alice","Bob","Chuck"] : List String
 ```
-<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ```elm
 > [1, "Mensagem"]
 ERRORS!!!
 ```
-<!-- .element: class="fragment" data-fragment-index="2" -->
 
 ```elm
 > [True, False]
 [True,False] : List Bool
 ```
-<!-- .element: class="fragment" data-fragment-index="3" -->
 
 ----
 
@@ -184,13 +175,11 @@ ERRORS!!!
 > (True, "yay!")
 (True,"yay!") : ( Bool, String )
 ```
-<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ```elm
 > (1,True,'a',[])
 (1,True,'a',[]) : ( number, Bool, Char, List a )
 ```
-<!-- .element: class="fragment" data-fragment-index="2" -->
 
 ----
 
@@ -208,7 +197,6 @@ ERRORS!!!
 > .name bill
 "Gates" : String
 ```
-<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ---
 
