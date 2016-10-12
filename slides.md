@@ -113,7 +113,100 @@ elm-repl
 ```
 
 ```elm
-"Hello World!"
+> "Hello World"
+"Hello World" : String
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```elm
+> :exit
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+----
+
+## Valores
+
+```elm
+> "hello" ++ "world"
+"helloworld" : String
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```
+> (2 + 3) * 4
+20 : number -- Int or Float depending on usage
+
+> 9 / 2
+4.5 : Float
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+```
+> 'A'
+'A' : Char
+```
+<!-- .element: class="fragment" data-fragment-index="3" -->
+
+```
+> True || False
+True : Bool
+```
+<!-- .element: class="fragment" data-fragment-index="4" -->
+
+---
+
+## Listas
+
+```elm
+> names = [ "Alice", "Bob", "Chuck" ]
+["Alice","Bob","Chuck"] : List String
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```elm
+> [1, "Mensagem"]
+ERRORS!!!
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+```elm
+> [True, False]
+[True,False] : List Bool
+```
+<!-- .element: class="fragment" data-fragment-index="3" -->
+
+---
+
+## Tuplas
+
+```elm
+> (True, "yay!")
+(True,"yay!") : ( Bool, String )
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```elm
+> (1,True,'a',[])
+(1,True,'a',[]) : ( number, Bool, Char, List a )
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+---
+
+## Records
+
+```elm
+> bill = { name = "Gates", age = 57 }
+{ name = "Gates", age = 57 } : { age : number, name : String }
+```
+
+```elm
+> bill.name
+"Gates" : String
+
+> .name bill
+"Gates" : String
 ```
 <!-- .element: class="fragment" data-fragment-index="1" -->
 
