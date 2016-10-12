@@ -1,6 +1,6 @@
-# Elm Workshop
+# Oficina de Elm
 <hr />
-<h4 class="subtitle">by Roberto Soares & Rogério Chaves</h4>
+<h4 class="subtitle">por Roberto Soares & Rogério Chaves</h4>
 
 <img src="pictures/roberto.jpeg" class="picture" />
 <img src="pictures/rogerio.jpeg" class="picture" />
