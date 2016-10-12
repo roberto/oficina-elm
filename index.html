@@ -202,85 +202,27 @@ ERRORS!!!
 </script></section><section ><section data-markdown><script type="text/template">
 ## Nossa primeira aplicação
 </script></section><section data-markdown><script type="text/template">
+## Entradas de usuário: Botão
+
 ```elm
-module Main exposing (..)
-
-import Html exposing (Html, button, div, text)
-import Html.App as App
-
-
-main =
-    App.beginnerProgram { model = 0, view = view, update = update }
-
-
-update a =
-    a
-
-
-view model =
-    text "hello world"
-```
-
-## Vamos adicionar tipos
-</script></section><section data-markdown><script type="text/template">
-```elm
-main : Program Never
-main =
-    App.beginnerProgram { model = 0, view = view, update = update }
-
-
-update : a -> a
-update a =
-    a
-
-
-view : a -> Html b
-view model =
-    text "hello world"
-```
-
-## Agora, um contador
-</script></section><section data-markdown><script type="text/template">
-```elm
-module Main exposing (..)
-
-import Html exposing (Html, button, div, text)
-import Html.App as App
-import Html.Events exposing (onClick)
-
-
-main : Program Never
-main =
-    App.beginnerProgram { model = 0, view = view, update = update }
-
-
-type Msg
-    = Increment
-    | Decrement
-
-
-type alias Model =
-    Int
-
-
-update : Msg -> Model -> Model
-update msg model =
-    case msg of
-        Increment ->
-            model + 1
-
-        Decrement ->
-            model - 1
-
+type Msg = Increment | Decrement
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ button [ onClick Decrement ] [ text "-" ]
-        , div [] [ text (toString model) ]
-        , button [ onClick Increment ] [ text "+" ]
-        ]
+    button [ onClick Increment ] [ text "+" ]
 ```
+</script></section></section><section ><section data-markdown><script type="text/template">
+## Entradas de usuário: Input
+
+```elm
+type Msg = Increment | Decrement | Change String
+
+view : Model -> Html Msg
+view model =
+    input [ value (toString model), onInput Change ] []
+```
+</script></section><section data-markdown><script type="text/template">
+¡dale!
 </script></section></section></div>
         </div>
 
