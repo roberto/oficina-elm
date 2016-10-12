@@ -35,7 +35,11 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         GetPokemon ->
-            ( model, Cmd.none )
+            ( { model
+                | image = "http://www.pokestadium.com/assets/img/sprites/1.png"
+              }
+            , Cmd.none
+            )
 
 
 view : Model -> Html Msg
