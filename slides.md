@@ -9,17 +9,25 @@ Note: apresentação
 
 ---
 
-## Agenda
+## Tópicos abordados
 
 * Linguagem
 * Arquitetura
 * Tipos
-* Interoperabilidade
+* Erros
 * Escalando
+
+----
+
+## Tópicos não abordados
+
+* Interoperabilidade
+* Testes
+* CSS
+* ...
 
 ---
 
-## Linguagem
 ## Elm?
 
 ----
