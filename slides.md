@@ -129,6 +129,10 @@ elm-repl
 > :exit
 ```
 
+Alternativa oline: [bit.ly/elm-repl](http://bit.ly/elm-repl/)
+
+Note: Read-eval-print-loop!
+
 ----
 
 ## Valores
