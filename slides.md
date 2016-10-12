@@ -7,7 +7,17 @@
 
 Note: apresentação
 
----
+----
+
+## Agenda
+
+* Linguagem
+* Arquitetura
+* Tipos
+* Interoperabilidade
+* Escalando
+
+----
 
 ## Elm?
 
