@@ -216,4 +216,28 @@ ERRORS!!!
 
 ----
 
+## Entradas de usuário: Botão
+
+```elm
+type Msg = Increment | Decrement
+
+view : Model -> Html Msg
+view model =
+    button [ onClick Increment ] [ text "+" ]
+```
+
+---
+
+## Entradas de usuário: Input
+
+```elm
+type Msg = Increment | Decrement | Change String
+
+view : Model -> Html Msg
+view model =
+    input [ value (toString model), onInput Change ] []
+```
+
+----
+
 ¡dale!
