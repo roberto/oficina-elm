@@ -216,4 +216,86 @@ ERRORS!!!
 
 ----
 
-¡dale!
+```elm
+module Main exposing (..)
+
+import Html exposing (Html, button, div, text)
+import Html.App as App
+
+
+main =
+    App.beginnerProgram { model = 0, view = view, update = update }
+
+
+update a =
+    a
+
+
+view model =
+    text "hello world"
+```
+
+## Vamos adicionar tipos
+
+----
+
+```elm
+main : Program Never
+main =
+    App.beginnerProgram { model = 0, view = view, update = update }
+
+
+update : a -> a
+update a =
+    a
+
+
+view : a -> Html b
+view model =
+    text "hello world"
+```
+
+## Agora, um contador
+
+----
+
+```elm
+module Main exposing (..)
+
+import Html exposing (Html, button, div, text)
+import Html.App as App
+import Html.Events exposing (onClick)
+
+
+main : Program Never
+main =
+    App.beginnerProgram { model = 0, view = view, update = update }
+
+
+type Msg
+    = Increment
+    | Decrement
+
+
+type alias Model =
+    Int
+
+
+update : Msg -> Model -> Model
+update msg model =
+    case msg of
+        Increment ->
+            model + 1
+
+        Decrement ->
+            model - 1
+
+
+view : Model -> Html Msg
+view model =
+    div []
+        [ button [ onClick Decrement ] [ text "-" ]
+        , div [] [ text (toString model) ]
+        , button [ onClick Increment ] [ text "+" ]
+        ]
+```
