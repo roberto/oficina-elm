@@ -24,11 +24,44 @@ Note: apresentação
 
 ----
 
-## Linguagem Funcional?
+## Linguagem Funcional
 
-Em 1º lugar - Esqueça o que escutou sobre funcional! (e programação)
+Esqueça o que escutou sobre funcional!
 
 Note: esqueça: termos difíceis, idéias estranhas, ferramentas ruins
+
+----
+
+## Compila para JavaScript
+
+Foco: Front-end
+
+----
+
+## Compilador como Assistente
+
+Melhores mensagens de erro!
+
+```sh
+The branches of this `if` produce different types of values.
+
+3|>  if n < 0 then
+4|>  "erro!"
+5|>  else
+6|>  2
+
+The `then` branch has type:
+
+    String
+
+But the `else` branch is:
+
+    number
+
+Hint: These need to match so that no matter which branch we take,
+we always get back the same type of value.
+```
+<!-- .element: class="stretch" -->
 
 ----
 
@@ -68,4 +101,6 @@ view model =
     ]
 ```
 <!-- .element: class="stretch" -->
+
+Note: exemplo de código
 
