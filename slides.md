@@ -104,3 +104,23 @@ view model =
 
 Note: exemplo de código
 
+---
+
+## Mão na massa!
+
+```sh
+elm-repl
+```
+
+```elm
+"Hello World!"
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+---
+
+## Nossa primeira aplicação
+
+----
+
+¡dale!
