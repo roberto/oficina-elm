@@ -154,7 +154,7 @@ True : Bool
 ```
 <!-- .element: class="fragment" data-fragment-index="4" -->
 
----
+----
 
 ## Listas
 
@@ -176,7 +176,7 @@ ERRORS!!!
 ```
 <!-- .element: class="fragment" data-fragment-index="3" -->
 
----
+----
 
 ## Tuplas
 
@@ -192,7 +192,7 @@ ERRORS!!!
 ```
 <!-- .element: class="fragment" data-fragment-index="2" -->
 
----
+----
 
 ## Records
 
@@ -214,7 +214,7 @@ ERRORS!!!
 
 ## Nossa primeira aplicação
 
-----
+---
 
 ## Entradas de usuário: Botão
 
@@ -226,7 +226,7 @@ view model =
     button [ onClick Increment ] [ text "+" ]
 ```
 
----
+----
 
 ## Entradas de usuário: Input
 
@@ -238,6 +238,6 @@ view model =
     input [ value (toString model), onInput Change ] []
 ```
 
-----
+---
 
 ¡dale!
