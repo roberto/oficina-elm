@@ -35,11 +35,40 @@
 ## Linguagem
 ## Elm?
 </script></section><section data-markdown><script type="text/template">
-## Linguagem Funcional?
+## Linguagem Funcional
 
-Em 1º lugar - Esqueça o que escutou sobre funcional! (e programação)
+Esqueça o que escutou sobre funcional!
 
 <aside class="notes" data-markdown>esqueça: termos difíceis, idéias estranhas, ferramentas ruins</aside></script></section><section data-markdown><script type="text/template">
+## Compila para JavaScript
+
+Foco: Front-end
+</script></section><section data-markdown><script type="text/template">
+## Compilador como Assistente
+
+Melhores mensagens de erro!
+
+```sh
+The branches of this `if` produce different types of values.
+
+3|>  if n < 0 then
+4|>  "erro!"
+5|>  else
+6|>  2
+
+The `then` branch has type:
+
+    String
+
+But the `else` branch is:
+
+    number
+
+Hint: These need to match so that no matter which branch we take,
+we always get back the same type of value.
+```
+<!-- .element: class="stretch" -->
+</script></section><section data-markdown><script type="text/template">
 ## Rápido
 
 ![benchmark](images/benchmark.png)
@@ -74,6 +103,184 @@ view model =
 ```
 <!-- .element: class="stretch" -->
 
+<aside class="notes" data-markdown>exemplo de código</aside></script></section></section><section ><section data-markdown><script type="text/template">
+## Mão na massa!
+
+```sh
+elm-repl
+```
+
+```elm
+> "Hello World"
+"Hello World" : String
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```elm
+> :exit
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+</script></section><section data-markdown><script type="text/template">
+## Valores
+
+```elm
+> "hello" ++ "world"
+"helloworld" : String
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```
+> (2 + 3) * 4
+20 : number -- Int or Float depending on usage
+
+> 9 / 2
+4.5 : Float
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+```
+> 'A'
+'A' : Char
+```
+<!-- .element: class="fragment" data-fragment-index="3" -->
+
+```
+> True || False
+True : Bool
+```
+<!-- .element: class="fragment" data-fragment-index="4" -->
+</script></section></section><section  data-markdown><script type="text/template">
+## Listas
+
+```elm
+> names = [ "Alice", "Bob", "Chuck" ]
+["Alice","Bob","Chuck"] : List String
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```elm
+> [1, "Mensagem"]
+ERRORS!!!
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+
+```elm
+> [True, False]
+[True,False] : List Bool
+```
+<!-- .element: class="fragment" data-fragment-index="3" -->
+</script></section><section  data-markdown><script type="text/template">
+## Tuplas
+
+```elm
+> (True, "yay!")
+(True,"yay!") : ( Bool, String )
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+```elm
+> (1,True,'a',[])
+(1,True,'a',[]) : ( number, Bool, Char, List a )
+```
+<!-- .element: class="fragment" data-fragment-index="2" -->
+</script></section><section  data-markdown><script type="text/template">
+## Records
+
+```elm
+> bill = { name = "Gates", age = 57 }
+{ name = "Gates", age = 57 } : { age : number, name : String }
+```
+
+```elm
+> bill.name
+"Gates" : String
+
+> .name bill
+"Gates" : String
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+</script></section><section ><section data-markdown><script type="text/template">
+## Nossa primeira aplicação
+</script></section><section data-markdown><script type="text/template">
+```elm
+module Main exposing (..)
+
+import Html exposing (Html, button, div, text)
+import Html.App as App
+
+
+main =
+    App.beginnerProgram { model = 0, view = view, update = update }
+
+
+update a =
+    a
+
+
+view model =
+    text "hello world"
+```
+
+## Vamos adicionar tipos
+</script></section><section data-markdown><script type="text/template">
+```elm
+main : Program Never
+main =
+    App.beginnerProgram { model = 0, view = view, update = update }
+
+
+update : a -> a
+update a =
+    a
+
+
+view : a -> Html b
+view model =
+    text "hello world"
+```
+
+## Agora, um contador
+</script></section><section data-markdown><script type="text/template">
+```elm
+module Main exposing (..)
+
+import Html exposing (Html, button, div, text)
+import Html.App as App
+import Html.Events exposing (onClick)
+
+
+main : Program Never
+main =
+    App.beginnerProgram { model = 0, view = view, update = update }
+
+
+type Msg
+    = Increment
+    | Decrement
+
+
+type alias Model =
+    Int
+
+
+update : Msg -> Model -> Model
+update msg model =
+    case msg of
+        Increment ->
+            model + 1
+
+        Decrement ->
+            model - 1
+
+
+view : Model -> Html Msg
+view model =
+    div []
+        [ button [ onClick Decrement ] [ text "-" ]
+        , div [] [ text (toString model) ]
+        , button [ onClick Increment ] [ text "+" ]
+        ]
+```
 </script></section></section></div>
         </div>
 
