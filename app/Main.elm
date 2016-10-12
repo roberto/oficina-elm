@@ -28,16 +28,23 @@ subscriptions _ =
 
 
 type alias Model =
+    { pokemon : Pokemon
+    , date : Date
+    }
+
+
+type alias Pokemon =
     { name : String
     , image : String
-    , date : Date
     }
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( { name = "MissingNo"
-      , image = "http://bit.ly/missingno-sprite"
+    ( { pokemon =
+            { name = "MissingNo"
+            , image = "http://bit.ly/missingno-sprite"
+            }
       , date = fromTime 0
       }
     , Cmd.none
@@ -60,15 +67,20 @@ update msg model =
 
         FetchPokemon id ->
             ( { model
-                | name = "Loading..."
-                , image = "http://www.pokestadium.com/assets/img/sprites/" ++ (toString id) ++ ".png"
+                | pokemon =
+                    { name = "Loading..."
+                    , image = "http://www.pokestadium.com/assets/img/sprites/" ++ (toString id) ++ ".png"
+                    }
               }
             , getPokemon id
             )
 
         FetchSucceed name ->
             ( { model
-                | name = name
+                | pokemon =
+                    { name = name
+                    , image = model.pokemon.image
+                    }
               }
             , Cmd.none
             )
@@ -87,8 +99,15 @@ view model =
         , model.date
             |> toString
             |> text
-        , h2 [] [ text model.name ]
-        , img [ src model.image ] []
+        , pokemonView model.pokemon
+        ]
+
+
+pokemonView : Pokemon -> Html Msg
+pokemonView pokemon =
+    div []
+        [ h2 [] [ text pokemon.name ]
+        , img [ src pokemon.image ] []
         ]
 
 
