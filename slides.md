@@ -142,7 +142,7 @@ Note: Read-eval-print-loop!
 "helloworld" : String
 ```
 
-```
+```elm
 > (2 + 3) * 4
 20 : number -- Int or Float depending on usage
 
@@ -150,14 +150,38 @@ Note: Read-eval-print-loop!
 4.5 : Float
 ```
 
-```
+```elm
 > 'A'
 'A' : Char
 ```
 
-```
+```elm
 > True || False
 True : Bool
+```
+
+----
+
+## Funções
+
+```elm
+> positivo numero = numero > 0
+```
+
+```elm
+> positivo -5
+False
+```
+
+```elm
+> positivo "a"
+The argument to function `positivo` is causing a mismatch.
+3|   positivo "a"
+              ^^^
+Function `positivo` is expecting the argument to be:
+    number
+But it is:
+    String
 ```
 
 ----
