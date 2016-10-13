@@ -259,6 +259,69 @@ Editor Online: [elm-lang.org/try](http://elm-lang.org/try/)
 
 ---
 
+## Hello World!
+
+```elm
+import Html exposing (Html, button, div, text)
+import Html.App as App
+
+main = App.beginnerProgram
+    { model = 0
+    , view = view
+    , update = update
+    }
+
+update a = a
+
+view model =
+    text "hello world"
+```
+
+[bit.ly/oe-hello](http://bit.ly/oe-hello)
+
+----
+
+```elm
+import Html exposing (Html, button, div, text)
+import Html.App as App
+```
+
+Note: falar de import, exposing, App
+
+----
+
+```elm
+main = App.beginnerProgram
+    { model = 0
+    , view = view
+    , update = update
+    }
+```
+
+Note: não aprofundar na arquitetura ainda. apenas
+falar o que cada coisa representa e que vamos
+definir logo após view e update.
+
+----
+
+```
+update a = a
+```
+
+Note: atualiza o model/estado, porém no momento
+apenas retorna o próprio estado. mais em breve
+
+----
+
+```
+view model =
+    text "hello world"
+```
+
+Note: renderiza o estado atual da aplicação
+
+---
+
 ## Entradas de usuário: Botão
 
 ```elm
