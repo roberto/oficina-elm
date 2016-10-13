@@ -566,14 +566,61 @@ pela última vez
 </script></section><section data-markdown><script type="text/template">
 ![Arquitetura com Mundo Externo](images/arquitetura-mundo.png)
 
-<aside class="notes" data-markdown>subscriptions!</aside></script></section></section><section  data-markdown><script type="text/template">
+<aside class="notes" data-markdown>subscriptions!</aside></script></section></section><section ><section data-markdown><script type="text/template">
+## Criando seu Tipo
+
+[bit.ly/oe-tipo](http://bit.ly/oe-tipo)
+</script></section><section data-markdown><script type="text/template">
+```elm
+type alias Model =
+    { name : String
+    , image : String
+    , date : Date
+    }
+```
+
+```elm
+type alias Model =
+    { pokemon : Pokemon
+    , date : Date
+    }
+
+type alias Pokemon =
+    { name : String
+    , image : String
+    }
+```
+</script></section><section data-markdown><script type="text/template">
+```elm
+h2 [] [ text model.name ]
+img [ src model.image ] []
+```
+
+```elm
+pokemonView model.pokemon
+```
+
+```elm
+pokemonView : Pokemon -> Html Msg
+```
+
+
+<aside class="notes" data-markdown>falar das vantanges em criar seus próprios tipos</aside></script></section></section><section ><section data-markdown><script type="text/template">
+## That's all folks!
+</script></section><section data-markdown><script type="text/template">
 ## Fontes
 
 * [Guia Oficial](https://guide.elm-lang.org/)
 * [Elixir e outras grandes ideias](https://speakerdeck.com/jessitron/elixir-and-other-great-ideas)
-</script></section><section  data-markdown><script type="text/template">
-# ¡dale!
-</script></section></div>
+</script></section><section data-markdown><script type="text/template">
+## Para aprender mais
+
+* [Elm Tutorial](https://www.elm-tutorial.org/en/)
+* [Elm in Action](https://www.manning.com/books/elm-in-action)
+* [elm-conf](https://www.youtube.com/channel/UCOpGiN9AkczVjlpGDaBwQrQ)
+</script></section><section data-markdown><script type="text/template">
+# ¡Gracias!
+</script></section></section></div>
         </div>
 
         <script src="lib/js/head.min.js"></script>
