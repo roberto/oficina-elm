@@ -277,13 +277,13 @@ main = App.beginnerProgram
 <aside class="notes" data-markdown>não aprofundar na arquitetura ainda. apenas
 falar o que cada coisa representa e que vamos
 definir logo após view e update.</aside></script></section><section data-markdown><script type="text/template">
-```
+```elm
 update a = a
 ```
 
 <aside class="notes" data-markdown>atualiza o model/estado, porém no momento
 apenas retorna o próprio estado. mais em breve</aside></script></section><section data-markdown><script type="text/template">
-```
+```elm
 view model =
     text "hello world"
 ```
@@ -291,14 +291,58 @@ view model =
 <aside class="notes" data-markdown>renderiza o estado atual da aplicação</aside></script></section></section><section ><section data-markdown><script type="text/template">
 ## Entradas de usuário: Botão
 
+[bit.ly/oe-contador](http://bit.ly/oe-contador)
+</script></section><section data-markdown><script type="text/template">
 ```elm
-type Msg = Increment | Decrement
-
-view : Model -> Html Msg
-view model =
-    button [ onClick Increment ] [ text "+" ]
+import Html.Events exposing (onClick)
 ```
 </script></section><section data-markdown><script type="text/template">
+```elm
+type alias Model = Int
+```
+
+```elm
+update : Msg -> Int -> Int
+
+update : Msg -> Model -> Model
+```
+
+<aside class="notes" data-markdown>falar de alias. leitura, refactoring</aside></script></section><section data-markdown><script type="text/template">
+```elm
+type Msg = Increment | Decrement
+```
+
+```elm
+update : Msg -> Model -> Model
+```
+
+<aside class="notes" data-markdown>falar de Union Types</aside></script></section><section data-markdown><script type="text/template">
+```elm
+update : Msg -> Model -> Model
+update msg model =
+  case msg of
+    Increment ->
+      model + 1
+
+    Decrement ->
+      model - 1
+```
+
+```elm
+    button [ onClick Decrement ] [ text "-" ]
+    button [ onClick Increment ] [ text "+" ]
+```
+
+<aside class="notes" data-markdown>Union Types e estado novo</aside></script></section><section data-markdown><script type="text/template">
+```elm
+    button [ onClick Decrement ] [ text "-" ]
+    button [ onClick Increment ] [ text "+" ]
+```
+
+```elm
+    div [] [ text (toString model)
+```
+</script></section></section><section  data-markdown><script type="text/template">
 ## Entradas de usuário: Input
 
 ```elm
@@ -308,8 +352,8 @@ view : Model -> Html Msg
 view model =
     input [ value (toString model), onInput Change ] []
 ```
-</script></section></section><section  data-markdown><script type="text/template">
-¡dale!
+</script></section><section  data-markdown><script type="text/template">
+# ¡dale!
 </script></section></div>
         </div>
 
