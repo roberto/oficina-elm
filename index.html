@@ -342,6 +342,12 @@ update msg model =
 ```elm
     div [] [ text (toString model)
 ```
+
+<aside class="notes" data-markdown>apenas renderiza o estado atual</aside></script></section></section><section ><section data-markdown><script type="text/template">
+Pausa para falar da
+## Arquitetura
+</script></section><section data-markdown><script type="text/template">
+![Arquitetura](images/arquitetura.png)
 </script></section></section><section  data-markdown><script type="text/template">
 ## Entradas de usuário: Input
 
@@ -352,6 +358,10 @@ view : Model -> Html Msg
 view model =
     input [ value (toString model), onInput Change ] []
 ```
+</script></section><section  data-markdown><script type="text/template">
+## Fontes
+
+* [Imagem da Arquitetura](https://speakerdeck.com/jessitron/elixir-and-other-great-ideas)
 </script></section><section  data-markdown><script type="text/template">
 # ¡dale!
 </script></section></div>
