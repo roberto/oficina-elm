@@ -463,7 +463,8 @@ type Result error value
     | Err error
 ```
 
-Note: exemplo de tratamento de erro, construtores
+Note: exemplo de tratamento de erro, construtores.
+falar do underscore
 
 ----
 
@@ -472,6 +473,51 @@ input [ value (toString model), onInput Change ] []
 ```
 
 Note: na view muda pouca coisa
+
+---
+
+## Pegando Pokemons e Evoluindo
+
+[bit.ly/oe-poke-imagens](http://bit.ly/oe-poke-imagens)
+
+----
+
+```elm
+type alias Model =
+    { name : String
+    , image : String
+    }
+```
+
+Note: model com mais dados
+
+----
+
+```elm
+App.program
+    { init = init
+    , view = view
+    , update = update
+    , subscriptions = always Sub.none
+    }
+```
+
+```elm
+init : ( Model, Cmd Msg )
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+```
+
+---
+
+Pausa para falar da
+## Arquitetura
+novamente
+
+----
+
+![Arquitetura Iniciante](images/arquitetura1.svg)
+![Arquitetura](images/arquitetura2.svg)
 
 ---
 
