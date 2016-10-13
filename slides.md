@@ -129,7 +129,7 @@ elm-repl
 > :exit
 ```
 
-Alternativa oline: [bit.ly/elm-repl](http://bit.ly/elm-repl/)
+Alternativa Online: [bit.ly/elm-repl](http://bit.ly/elm-repl/)
 
 Note: Read-eval-print-loop!
 
@@ -213,6 +213,8 @@ ERRORS!!!
 ---
 
 ## Nossa primeira aplicação
+
+Editor Online: [elm-lang.org/try](http://elm-lang.org/try/)
 
 ---
 
