@@ -400,16 +400,177 @@ type Result error value
     | Err error
 ```
 
-<aside class="notes" data-markdown>exemplo de tratamento de erro, construtores</aside></script></section><section data-markdown><script type="text/template">
+<aside class="notes" data-markdown>exemplo de tratamento de erro, construtores.
+falar do underscore</aside></script></section><section data-markdown><script type="text/template">
 ```elm
 input [ value (toString model), onInput Change ] []
 ```
 
-<aside class="notes" data-markdown>na view muda pouca coisa</aside></script></section></section><section  data-markdown><script type="text/template">
+<aside class="notes" data-markdown>na view muda pouca coisa</aside></script></section></section><section ><section data-markdown><script type="text/template">
+## Pegando Pokemons e Evoluindo
+
+[bit.ly/oe-poke-imagens](http://bit.ly/oe-poke-imagens)
+</script></section><section data-markdown><script type="text/template">
+```elm
+type alias Model =
+    { name : String
+    , image : String
+    }
+```
+
+<aside class="notes" data-markdown>model com mais dados</aside></script></section><section data-markdown><script type="text/template">
+```elm
+App.program
+    { init = init
+    , view = view
+    , update = update
+    , subscriptions = always Sub.none
+    }
+```
+
+```elm
+init : ( Model, Cmd Msg )
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+```
+
+<aside class="notes" data-markdown>falar da mudança de assinatura e puxar o
+próximo tópico, arquitetura</aside></script></section></section><section ><section data-markdown><script type="text/template">
+Pausa para falar da
+## Arquitetura
+novamente
+</script></section><section data-markdown><script type="text/template">
+![Arquitetura Iniciante](images/arquitetura1.svg)
+![Arquitetura](images/arquitetura2.svg)
+</script></section></section><section ><section data-markdown><script type="text/template">
+## Nome do Bulba
+
+[bit.ly/oe-poke-req](http://bit.ly/oe-poke-req)
+</script></section><section data-markdown><script type="text/template">
+```elm
+button [ onClick GetPokemon ] [ text "Get more Pokémons!" ]
+```
+
+```elm
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        GetPokemon ->
+            ( { model
+                | name = "Loading..."
+                , image = "http://www.pokestadium.com/assets/img/sprites/1.png"
+              }
+            , getPokemon 1
+            )
+```
+
+```elm
+getPokemon : Int -> Cmd Msg
+```
+
+<aside class="notes" data-markdown>botão clicado -> mensagem -> retorna estado de loading + Cmd retornado
+pela função getPokemon</aside></script></section><section data-markdown><script type="text/template">
+```elm
+Task.perform FetchFail FetchSucceed (Http.get decodePokemonName url)
+```
+
+```elm
+type Msg
+    = GetPokemon
+    | FetchSucceed String
+    | FetchFail Http.Error
+```
+
+<aside class="notes" data-markdown>função getPokemon retorna uma task. falha, sucesso, tipos</aside></script></section><section data-markdown><script type="text/template">
+```elm
+FetchSucceed name ->
+    ( { model
+        | name = name
+      }
+    , Cmd.none
+    )
+
+FetchFail _ ->
+    init
+```
+
+<aside class="notes" data-markdown>resposta da request vira Msg e em caso de erro volta ao estado inicial</aside></script></section></section><section ><section data-markdown><script type="text/template">
+## Pokemons aleatórios
+
+[bit.ly/oe-poke-random](http://bit.ly/oe-poke-random)
+</script></section><section data-markdown><script type="text/template">
+```elm
+update msg model =
+    case msg of
+        GetRandomPokemon ->
+            ( model, Random.generate FetchPokemon (Random.int 1 721) )
+
+        FetchPokemon id ->
+```
+
+```elm
+generate : (a -> msg) -> Generator a -> Cmd msg
+```
+
+<aside class="notes" data-markdown>Random.generate retorna um Cmd. falar sobre aleatoridade em funcional</aside></script></section></section><section ><section data-markdown><script type="text/template">
+## Tempo
+
+[bit.ly/oe-tempo](http://bit.ly/oe-tempo)
+</script></section><section data-markdown><script type="text/template">
+## Que lindo!
+
+```elm
+model.date
+    |> toString
+    |> text
+```
+
+```elm
+model.date |> toString |> text
+```
+
+```elm
+text(toString(model.date))
+```
+
+<aside class="notes" data-markdown>lindo</aside></script></section><section data-markdown><script type="text/template">
+### Subscriptions
+
+```elm
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    Time.every second Tick
+```
+
+```elm
+type Msg
+    = GetRandomPokemon
+    | FetchPokemon Int
+    | FetchSucceed String
+    | FetchFail Http.Error
+    | Tick Time
+```
+
+```elm
+Tick time ->
+    ( { model | date = fromTime time }, Cmd.none )
+```
+
+<aside class="notes" data-markdown>falar de outros exemplos de subscriptions também
+tem slide para ajudar a falar sobre</aside></script></section></section><section ><section data-markdown><script type="text/template">
+Pausa para falar da
+## Arquitetura
+pela última vez
+</script></section><section data-markdown><script type="text/template">
+![Arquitetura](images/arquitetura.png)
+</script></section><section data-markdown><script type="text/template">
+![Arquitetura com Mundo Externo](images/arquitetura-mundo.png)
+
+<aside class="notes" data-markdown>subscriptions!</aside></script></section></section><section  data-markdown><script type="text/template">
 ## Fontes
 
 * [Guia Oficial](https://guide.elm-lang.org/)
-* [Imagem da Arquitetura](https://speakerdeck.com/jessitron/elixir-and-other-great-ideas)
+* [Elixir e outras grandes ideias](https://speakerdeck.com/jessitron/elixir-and-other-great-ideas)
 </script></section><section  data-markdown><script type="text/template">
 # ¡dale!
 </script></section></div>
