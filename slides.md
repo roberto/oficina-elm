@@ -406,18 +406,78 @@ Pausa para falar da
 
 ## Entradas de usuário: Input
 
-```elm
-type Msg = Increment | Decrement | Change String
+[bit.ly/oe-input](http://bit.ly/oe-input)
 
-view : Model -> Html Msg
-view model =
-    input [ value (toString model), onInput Change ] []
+----
+
+```elm
+type Msg
+    = Increment
+    | Decrement
+    | Change String
 ```
+
+```elm
+Increment
+Change "100"
+Change 4 -- invalid
+```
+
+Note: construtores
+
+----
+
+```elm
+type Msg
+    = Increment
+    | Decrement
+    | Change String
+```
+
+```elm
+case msg of 
+    Change strValue ->
+        case (String.toInt strValue) of
+```
+
+Note: utilizando a String do Change String
+
+----
+
+```elm
+case (String.toInt strValue) of
+    Ok value ->
+        value
+
+    Err _ ->
+        model
+```
+
+```elm
+toInt : String -> Result String Int
+```
+
+```elm
+type Result error value
+    = Ok value
+    | Err error
+```
+
+Note: exemplo de tratamento de erro, construtores
+
+----
+
+```elm
+input [ value (toString model), onInput Change ] []
+```
+
+Note: na view muda pouca coisa
 
 ---
 
 ## Fontes
 
+* [Guia Oficial](https://guide.elm-lang.org/)
 * [Imagem da Arquitetura](https://speakerdeck.com/jessitron/elixir-and-other-great-ideas)
 
 ---
