@@ -734,6 +734,14 @@ Note: falar das vantanges em criar seus próprios tipos
 * [Guia Oficial](https://guide.elm-lang.org/)
 * [Elixir e outras grandes ideias](https://speakerdeck.com/jessitron/elixir-and-other-great-ideas)
 
----
+----
 
-# ¡dale!
+## Para aprender mais
+
+* [Elm Tutorial](https://www.elm-tutorial.org/en/)
+* [Elm in Action](https://www.manning.com/books/elm-in-action)
+* [elm-conf](https://www.youtube.com/channel/UCOpGiN9AkczVjlpGDaBwQrQ)
+
+----
+
+# ¡Gracias!
