@@ -135,7 +135,7 @@ Note: Read-eval-print-loop!
 
 ----
 
-## Valores
+## Primitivos
 
 ```elm
 > "hello" ++ "world"
@@ -184,8 +184,6 @@ But it is:
     String
 ```
 
-----
-
 ## Listas
 
 ```elm
@@ -232,6 +230,25 @@ ERRORS!!!
 
 > .name bill
 "Gates" : String
+```
+
+----
+
+## Funções infix
+
+```elm
+> "hello" ++ "world"
+> 3 + 5
+```
+
+```elm
+> (+) 3 5
+> (++) "hello" "world"
+```
+
+```elm
+> soma = (+)
+> 1 `soma` 2
 ```
 
 ---
