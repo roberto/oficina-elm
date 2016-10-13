@@ -679,6 +679,56 @@ Note: subscriptions!
 
 ---
 
+## Criando seu Tipo
+
+[bit.ly/oe-tipo](http://bit.ly/oe-tipo)
+
+----
+
+```elm
+type alias Model =
+    { name : String
+    , image : String
+    , date : Date
+    }
+```
+
+```elm
+type alias Model =
+    { pokemon : Pokemon
+    , date : Date
+    }
+
+type alias Pokemon =
+    { name : String
+    , image : String
+    }
+```
+
+----
+
+```elm
+h2 [] [ text model.name ]
+img [ src model.image ] []
+```
+
+```elm
+pokemonView model.pokemon
+```
+
+```elm
+pokemonView : Pokemon -> Html Msg
+```
+
+
+Note: falar das vantanges em criar seus próprios tipos
+
+---
+
+## That's all folks!
+
+----
+
 ## Fontes
 
 * [Guia Oficial](https://guide.elm-lang.org/)
