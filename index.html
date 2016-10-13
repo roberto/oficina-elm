@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Elm Workshop</title>
+        <title>Oficina de Elm</title>
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="theme/thoughtworks.css" id="theme">
         <!-- For syntax highlighting -->
@@ -23,16 +23,22 @@
 <img src="images/roberto.jpeg" class="picture" />
 <img src="images/rogerio.jpeg" class="picture" />
 
-<aside class="notes" data-markdown>apresentação</aside></script></section><section  data-markdown><script type="text/template">
-## Agenda
+<aside class="notes" data-markdown>apresentação</aside></script></section><section ><section data-markdown><script type="text/template">
+## Tópicos abordados
 
 * Linguagem
 * Arquitetura
 * Tipos
-* Interoperabilidade
+* Erros
 * Escalando
-</script></section><section ><section data-markdown><script type="text/template">
-## Linguagem
+</script></section><section data-markdown><script type="text/template">
+## Tópicos não abordados
+
+* Interoperabilidade
+* Testes
+* CSS
+* ...
+</script></section></section><section ><section data-markdown><script type="text/template">
 ## Elm?
 </script></section><section data-markdown><script type="text/template">
 ## Linguagem Funcional
@@ -114,61 +120,77 @@ elm-repl
 > "Hello World"
 "Hello World" : String
 ```
-<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ```elm
 > :exit
 ```
-<!-- .element: class="fragment" data-fragment-index="2" -->
-</script></section><section data-markdown><script type="text/template">
-## Valores
+
+Alternativa Online: [bit.ly/elm-repl](http://bit.ly/elm-repl/)
+
+<aside class="notes" data-markdown>Read-eval-print-loop!</aside></script></section><section data-markdown><script type="text/template">
+## Primitivos
 
 ```elm
 > "hello" ++ "world"
 "helloworld" : String
 ```
-<!-- .element: class="fragment" data-fragment-index="1" -->
 
-```
+```elm
 > (2 + 3) * 4
 20 : number -- Int or Float depending on usage
 
 > 9 / 2
 4.5 : Float
 ```
-<!-- .element: class="fragment" data-fragment-index="2" -->
 
-```
+```elm
 > 'A'
 'A' : Char
 ```
-<!-- .element: class="fragment" data-fragment-index="3" -->
 
-```
+```elm
 > True || False
 True : Bool
 ```
-<!-- .element: class="fragment" data-fragment-index="4" -->
 </script></section><section data-markdown><script type="text/template">
+## Funções
+
+```elm
+> positivo numero = numero > 0
+```
+
+```elm
+> positivo -5
+False
+```
+
+```elm
+> positivo "a"
+The argument to function `positivo` is causing a mismatch.
+3|   positivo "a"
+              ^^^
+Function `positivo` is expecting the argument to be:
+    number
+But it is:
+    String
+```
+
 ## Listas
 
 ```elm
 > names = [ "Alice", "Bob", "Chuck" ]
 ["Alice","Bob","Chuck"] : List String
 ```
-<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ```elm
 > [1, "Mensagem"]
 ERRORS!!!
 ```
-<!-- .element: class="fragment" data-fragment-index="2" -->
 
 ```elm
 > [True, False]
 [True,False] : List Bool
 ```
-<!-- .element: class="fragment" data-fragment-index="3" -->
 </script></section><section data-markdown><script type="text/template">
 ## Tuplas
 
@@ -176,13 +198,11 @@ ERRORS!!!
 > (True, "yay!")
 (True,"yay!") : ( Bool, String )
 ```
-<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ```elm
 > (1,True,'a',[])
 (1,True,'a',[]) : ( number, Bool, Char, List a )
 ```
-<!-- .element: class="fragment" data-fragment-index="2" -->
 </script></section><section data-markdown><script type="text/template">
 ## Records
 
@@ -198,10 +218,77 @@ ERRORS!!!
 > .name bill
 "Gates" : String
 ```
-<!-- .element: class="fragment" data-fragment-index="1" -->
+</script></section><section data-markdown><script type="text/template">
+## Funções infix
+
+```elm
+> "hello" ++ "world"
+> 3 + 5
+```
+
+```elm
+> (+) 3 5
+> (++) "hello" "world"
+```
+
+```elm
+> soma = (+)
+> 1 `soma` 2
+```
 </script></section></section><section  data-markdown><script type="text/template">
 ## Nossa primeira aplicação
+
+Editor Online: [elm-lang.org/try](http://elm-lang.org/try/)
 </script></section><section ><section data-markdown><script type="text/template">
+## Hello World!
+
+```elm
+import Html exposing (Html, button, div, text)
+import Html.App as App
+
+main = App.beginnerProgram
+    { model = 0
+    , view = view
+    , update = update
+    }
+
+update a = a
+
+view model =
+    text "hello world"
+```
+
+[bit.ly/oe-hello](http://bit.ly/oe-hello)
+</script></section><section data-markdown><script type="text/template">
+```elm
+import Html exposing (Html, button, div, text)
+import Html.App as App
+```
+
+<aside class="notes" data-markdown>falar de import, exposing, App</aside></script></section><section data-markdown><script type="text/template">
+```elm
+main = App.beginnerProgram
+    { model = 0
+    , view = view
+    , update = update
+    }
+```
+
+<aside class="notes" data-markdown>não aprofundar na arquitetura ainda. apenas
+falar o que cada coisa representa e que vamos
+definir logo após view e update.</aside></script></section><section data-markdown><script type="text/template">
+```
+update a = a
+```
+
+<aside class="notes" data-markdown>atualiza o model/estado, porém no momento
+apenas retorna o próprio estado. mais em breve</aside></script></section><section data-markdown><script type="text/template">
+```
+view model =
+    text "hello world"
+```
+
+<aside class="notes" data-markdown>renderiza o estado atual da aplicação</aside></script></section></section><section ><section data-markdown><script type="text/template">
 ## Entradas de usuário: Botão
 
 ```elm
