@@ -306,7 +306,7 @@ definir logo após view e update.
 
 ----
 
-```
+```elm
 update a = a
 ```
 
@@ -315,7 +315,7 @@ apenas retorna o próprio estado. mais em breve
 
 ----
 
-```
+```elm
 view model =
     text "hello world"
 ```
@@ -326,15 +326,72 @@ Note: renderiza o estado atual da aplicação
 
 ## Entradas de usuário: Botão
 
-```elm
-type Msg = Increment | Decrement
+[bit.ly/oe-contador](http://bit.ly/oe-contador)
 
-view : Model -> Html Msg
-view model =
-    button [ onClick Increment ] [ text "+" ]
+----
+
+```elm
+import Html.Events exposing (onClick)
 ```
 
 ----
+
+```elm
+type alias Model = Int
+```
+
+```elm
+update : Msg -> Int -> Int
+
+update : Msg -> Model -> Model
+```
+
+Note: falar de alias. leitura, refactoring
+
+----
+
+```elm
+type Msg = Increment | Decrement
+```
+
+```elm
+update : Msg -> Model -> Model
+```
+
+Note: falar de Union Types
+
+----
+
+```elm
+update : Msg -> Model -> Model
+update msg model =
+  case msg of
+    Increment ->
+      model + 1
+
+    Decrement ->
+      model - 1
+```
+
+```elm
+    button [ onClick Decrement ] [ text "-" ]
+    button [ onClick Increment ] [ text "+" ]
+```
+
+Note: Union Types e estado novo
+
+----
+
+```elm
+    button [ onClick Decrement ] [ text "-" ]
+    button [ onClick Increment ] [ text "+" ]
+```
+
+```elm
+    div [] [ text (toString model)
+```
+
+---
 
 ## Entradas de usuário: Input
 
@@ -348,4 +405,4 @@ view model =
 
 ---
 
-¡dale!
+# ¡dale!
