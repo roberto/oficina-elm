@@ -610,10 +610,79 @@ Note: Random.generate retorna um Cmd. falar sobre aleatoridade em funcional
 
 ---
 
+## Tempo
+
+[bit.ly/oe-tempo](http://bit.ly/oe-tempo)
+
+----
+
+## Que lindo!
+
+```elm
+model.date
+    |> toString
+    |> text
+```
+
+```elm
+model.date |> toString |> text
+```
+
+```elm
+text(toString(model.date))
+```
+
+Note: lindo
+
+----
+
+### Subscriptions
+
+```elm
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    Time.every second Tick
+```
+
+```elm
+type Msg
+    = GetRandomPokemon
+    | FetchPokemon Int
+    | FetchSucceed String
+    | FetchFail Http.Error
+    | Tick Time
+```
+
+```elm
+Tick time ->
+    ( { model | date = fromTime time }, Cmd.none )
+```
+
+Note: falar de outros exemplos de subscriptions também
+tem slide para ajudar a falar sobre
+
+---
+
+Pausa para falar da
+## Arquitetura
+pela última vez
+
+----
+
+![Arquitetura](images/arquitetura.png)
+
+----
+
+![Arquitetura com Mundo Externo](images/arquitetura-mundo.png)
+
+Note: subscriptions!
+
+---
+
 ## Fontes
 
 * [Guia Oficial](https://guide.elm-lang.org/)
-* [Imagem da Arquitetura](https://speakerdeck.com/jessitron/elixir-and-other-great-ideas)
+* [Elixir e outras grandes ideias](https://speakerdeck.com/jessitron/elixir-and-other-great-ideas)
 
 ---
 
