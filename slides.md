@@ -508,6 +508,9 @@ init : ( Model, Cmd Msg )
 update : Msg -> Model -> ( Model, Cmd Msg )
 ```
 
+Note: falar da mudança de assinatura e puxar o
+próximo tópico, arquitetura
+
 ---
 
 Pausa para falar da
@@ -548,6 +551,9 @@ update msg model =
 getPokemon : Int -> Cmd Msg
 ```
 
+Note: botão clicado -> mensagem -> retorna estado de loading + Cmd retornado
+pela função getPokemon
+
 ----
 
 ```elm
@@ -561,7 +567,7 @@ type Msg
     | FetchFail Http.Error
 ```
 
-Note: falha, sucesso, tipos
+Note: função getPokemon retorna uma task. falha, sucesso, tipos
 
 ----
 
@@ -576,6 +582,31 @@ FetchSucceed name ->
 FetchFail _ ->
     init
 ```
+
+Note: resposta da request vira Msg e em caso de erro volta ao estado inicial
+
+---
+
+## Pokemons aleatórios
+
+[bit.ly/oe-poke-random](http://bit.ly/oe-poke-random)
+
+----
+
+```elm
+update msg model =
+    case msg of
+        GetRandomPokemon ->
+            ( model, Random.generate FetchPokemon (Random.int 1 721) )
+
+        FetchPokemon id ->
+```
+
+```elm
+generate : (a -> msg) -> Generator a -> Cmd msg
+```
+
+Note: Random.generate retorna um Cmd. falar sobre aleatoridade em funcional
 
 ---
 
