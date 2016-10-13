@@ -348,19 +348,67 @@ Pausa para falar da
 ## Arquitetura
 </script></section><section data-markdown><script type="text/template">
 ![Arquitetura](images/arquitetura.png)
-</script></section></section><section  data-markdown><script type="text/template">
+</script></section></section><section ><section data-markdown><script type="text/template">
 ## Entradas de usuário: Input
 
+[bit.ly/oe-input](http://bit.ly/oe-input)
+</script></section><section data-markdown><script type="text/template">
 ```elm
-type Msg = Increment | Decrement | Change String
-
-view : Model -> Html Msg
-view model =
-    input [ value (toString model), onInput Change ] []
+type Msg
+    = Increment
+    | Decrement
+    | Change String
 ```
-</script></section><section  data-markdown><script type="text/template">
+
+```elm
+Increment
+Change "100"
+Change 4 -- invalid
+```
+
+<aside class="notes" data-markdown>construtores</aside></script></section><section data-markdown><script type="text/template">
+```elm
+type Msg
+    = Increment
+    | Decrement
+    | Change String
+```
+
+```elm
+case msg of 
+    Change strValue ->
+        case (String.toInt strValue) of
+```
+
+<aside class="notes" data-markdown>utilizando a String do Change String</aside></script></section><section data-markdown><script type="text/template">
+```elm
+case (String.toInt strValue) of
+    Ok value ->
+        value
+
+    Err _ ->
+        model
+```
+
+```elm
+toInt : String -> Result String Int
+```
+
+```elm
+type Result error value
+    = Ok value
+    | Err error
+```
+
+<aside class="notes" data-markdown>exemplo de tratamento de erro, construtores</aside></script></section><section data-markdown><script type="text/template">
+```elm
+input [ value (toString model), onInput Change ] []
+```
+
+<aside class="notes" data-markdown>na view muda pouca coisa</aside></script></section></section><section  data-markdown><script type="text/template">
 ## Fontes
 
+* [Guia Oficial](https://guide.elm-lang.org/)
 * [Imagem da Arquitetura](https://speakerdeck.com/jessitron/elixir-and-other-great-ideas)
 </script></section><section  data-markdown><script type="text/template">
 # ¡dale!
