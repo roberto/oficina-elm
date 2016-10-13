@@ -521,6 +521,64 @@ novamente
 
 ---
 
+## Nome do Bulba
+
+[bit.ly/oe-poke-req](http://bit.ly/oe-poke-req)
+
+----
+
+```elm
+button [ onClick GetPokemon ] [ text "Get more Pokémons!" ]
+```
+
+```elm
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        GetPokemon ->
+            ( { model
+                | name = "Loading..."
+                , image = "http://www.pokestadium.com/assets/img/sprites/1.png"
+              }
+            , getPokemon 1
+            )
+```
+
+```elm
+getPokemon : Int -> Cmd Msg
+```
+
+----
+
+```elm
+Task.perform FetchFail FetchSucceed (Http.get decodePokemonName url)
+```
+
+```elm
+type Msg
+    = GetPokemon
+    | FetchSucceed String
+    | FetchFail Http.Error
+```
+
+Note: falha, sucesso, tipos
+
+----
+
+```elm
+FetchSucceed name ->
+    ( { model
+        | name = name
+      }
+    , Cmd.none
+    )
+
+FetchFail _ ->
+    init
+```
+
+---
+
 ## Fontes
 
 * [Guia Oficial](https://guide.elm-lang.org/)
