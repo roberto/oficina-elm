@@ -184,6 +184,8 @@ But it is:
     String
 ```
 
+----
+
 ## Listas
 
 ```elm
