@@ -391,6 +391,17 @@ Note: Union Types e estado novo
     div [] [ text (toString model)
 ```
 
+Note: apenas renderiza o estado atual
+
+---
+
+Pausa para falar da
+## Arquitetura
+
+----
+
+![Arquitetura](images/arquitetura.png)
+
 ---
 
 ## Entradas de usuário: Input
@@ -402,6 +413,12 @@ view : Model -> Html Msg
 view model =
     input [ value (toString model), onInput Change ] []
 ```
+
+---
+
+## Fontes
+
+* [Imagem da Arquitetura](https://speakerdeck.com/jessitron/elixir-and-other-great-ideas)
 
 ---
 
