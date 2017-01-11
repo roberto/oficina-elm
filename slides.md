@@ -84,6 +84,18 @@ Note: esqueça: termos difíceis, idéias estranhas, ferramentas ruins
 ----
 
 ```elm
+soma : Int -> Int -> Int
+soma a b =
+    a + b
+```
+
+----
+
+![anatomia de uma funcao elm](images/anatomia-funcao.png)
+
+----
+
+```elm
 import Html exposing (Html, button, div, text)
 import Html.App as App
 import Html.Events exposing (onClick)
@@ -435,7 +447,7 @@ type Msg
 ```
 
 ```elm
-case msg of 
+case msg of
     Change strValue ->
         case (String.toInt strValue) of
 ```
