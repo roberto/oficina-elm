@@ -83,6 +83,14 @@ we always get back the same type of value.
 
 <aside class="notes" data-markdown>esqueça: termos difíceis, idéias estranhas, ferramentas ruins</aside></script></section><section data-markdown><script type="text/template">
 ```elm
+soma : Int -> Int -> Int
+soma a b =
+    a + b
+```
+</script></section><section data-markdown><script type="text/template">
+![anatomia de uma funcao elm](images/anatomia-funcao.png)
+</script></section><section data-markdown><script type="text/template">
+```elm
 import Html exposing (Html, button, div, text)
 import Html.App as App
 import Html.Events exposing (onClick)
@@ -375,7 +383,7 @@ type Msg
 ```
 
 ```elm
-case msg of 
+case msg of
     Change strValue ->
         case (String.toInt strValue) of
 ```
@@ -668,7 +676,7 @@ pokemonView : Pokemon -> Html Msg
             Reveal.initialize(options);
         </script>
         
-          <script src="/scripts/elm-workshop"></script>
+          <script src="/scripts/oficina-elm"></script>
     </body>
 </html>
 
